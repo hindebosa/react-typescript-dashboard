@@ -26,6 +26,7 @@ import "./App.css";
 
 import { useStateContext } from "./context/ContextProvider";
 import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
 
 const App = () => {
   const {
@@ -88,6 +89,7 @@ const App = () => {
               <Routes>
                 {/*auth*/}
                 <Route path="/signup" element={<SignUp />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/" element={<Ecommerce />} />
                 <Route path="/ecommerce" element={<Ecommerce />} />
 
