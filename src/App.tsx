@@ -27,6 +27,9 @@ import "./App.css";
 import { useStateContext } from "./context/ContextProvider";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import AddProduct from "./pages/AddProduct";
+
+import SingleProduct from "./pages/Product";
 
 const App = () => {
   const {
@@ -51,6 +54,10 @@ const App = () => {
   return (
     <div className={currentMode === "Dark" ? "dark" : ""}>
       <BrowserRouter>
+        <Routes>
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
         <div className="flex relative dark:bg-main-dark-bg">
           <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
             <TooltipComponent content="Settings" position="TopLeft">
@@ -88,11 +95,11 @@ const App = () => {
 
               <Routes>
                 {/*auth*/}
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/" element={<Ecommerce />} />
-                <Route path="/ecommerce" element={<Ecommerce />} />
 
+                <Route path="/" element={<Ecommerce />} />
+                <Route path="/" element={<Ecommerce />} />
+                <Route path="/addProduct" element={<AddProduct />} />
+                <Route path="/product/:id" element={<SingleProduct />} />
                 {/* pages  */}
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/employees" element={<Employees />} />

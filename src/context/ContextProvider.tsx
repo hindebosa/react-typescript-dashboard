@@ -1,11 +1,12 @@
+import axios from "axios";
 import React, {
-  Children,
   createContext,
   PropsWithChildren,
   useContext,
   useState,
 } from "react";
-import { inflateRaw } from "zlib";
+import { getAllproducts } from "../api/allCalls";
+import { Product, Transpoter } from "../types";
 
 interface initialStateProps {
   chat: boolean;
@@ -26,6 +27,10 @@ interface StateContextProps {
   currentMode: string;
   activeMenu: boolean;
   screenSize: number;
+  addProduct: (product: Product) => void;
+  getSingleProduct: (id: string) => Promise<Product>;
+  getAllTranspoters: () => Promise<Transpoter[]>;
+  getAllProducts: () => Promise<Product[]>;
   setScreenSize: React.Dispatch<React.SetStateAction<number>>;
   handleClick: (clicked: string) => void;
   isClicked: initialStateProps;
@@ -49,6 +54,7 @@ const AppContext = createContext<StateContextProps>({
   handleClick: (clicked: string) => null,
   isClicked: initialState,
   initialState,
+  addProduct: () => null,
   setIsClicked: () => null,
   setActiveMenu: () => null,
   setCurrentColor: () => null,
@@ -57,6 +63,12 @@ const AppContext = createContext<StateContextProps>({
   setColor: (color: string) => null,
   themeSettings: false,
   setThemeSettings: () => null,
+  //@ts-ignore
+  getAllProducts: () => null,
+  //@ts-ignore
+  getSingleProduct: () => null,
+  //@ts-ignore
+  getAllTranspoters: () => null,
 });
 
 export const ContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
@@ -80,6 +92,36 @@ export const ContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const handleClick = (clicked: string) =>
     setIsClicked({ ...initialState, [clicked]: true });
 
+  const getAllProducts = async (): Promise<Product[]> => {
+    const allProds = await getAllproducts();
+
+    return allProds;
+  };
+  const getSingleProduct = async (id: string): Promise<Product> => {
+    const product = await getSingleProduct(id);
+
+    return product;
+  };
+
+  const addProduct = async (product: Product) => {
+    let products = {
+      name: product.name,
+      price: product.price,
+      amount: product.amount,
+      address: "hey hie",
+    };
+    const result = await axios.post(
+      "http://localhost:6969/products/addProduct",
+      products
+    );
+  };
+  const getAllTranspoters = async () => {
+    const result = await axios.get(
+      "http://localhost:6969/transpoter/allTranspoters"
+    );
+    return result.data;
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -87,7 +129,12 @@ export const ContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
         currentMode,
         activeMenu,
         screenSize,
+        addProduct,
+        //@ts-ignore
+        getAllTranspoters,
+        getAllProducts,
         setScreenSize,
+        getSingleProduct,
         handleClick,
         isClicked,
         initialState,
