@@ -4,14 +4,23 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ContextProvider } from "./context/ContextProvider";
+import PaynowReactWrapper from "paynow-react";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+const paynow_config = {
+  integration_id: "15628",
+  integration_key: "290cfc50-77a2-4d54-b77b-613dce1c4381",
+  result_url: "default-result-url",
+  return_url: "default-return-url",
+};
 root.render(
   <React.StrictMode>
     <ContextProvider>
-      <App />
+      <PaynowReactWrapper {...paynow_config}>
+        <App />
+      </PaynowReactWrapper>
     </ContextProvider>
   </React.StrictMode>
 );
