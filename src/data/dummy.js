@@ -523,10 +523,6 @@ export const links = [
         name: "addproduct",
         icon: <FiPlusCircle />,
       },
-      {
-        name: "products",
-        icon: <FiPlusCircle />,
-      },
     ],
   },
 
@@ -559,56 +555,18 @@ export const links = [
         name: "Users",
         icon: <AiOutlineCalendar />,
       },
-      {
-        name: "kanban",
-        icon: <BsKanban />,
-      },
-      {
-        name: "editor",
-        icon: <FiEdit />,
-      },
-      {
-        name: "color-picker",
-        icon: <BiColorFill />,
-      },
-    ],
-  },
-  {
-    title: "Charts",
-    links: [
-      {
-        name: "line",
-        icon: <AiOutlineStock />,
-      },
-      {
-        name: "area",
-        icon: <AiOutlineAreaChart />,
-      },
-
-      {
-        name: "bar",
-        icon: <AiOutlineBarChart />,
-      },
-      {
-        name: "pie",
-        icon: <FiPieChart />,
-      },
-      {
-        name: "financial",
-        icon: <RiStockLine />,
-      },
-      {
-        name: "color-mapping",
-        icon: <BsBarChart />,
-      },
-      {
-        name: "pyramid",
-        icon: <GiLouvrePyramid />,
-      },
-      {
-        name: "stacked",
-        icon: <AiOutlineBarChart />,
-      },
+      // {
+      //   name: "kanban",
+      //   icon: <BsKanban />,
+      // },
+      // {
+      //   name: "editor",
+      //   icon: <FiEdit />,
+      // },
+      // {
+      //   name: "color-picker",
+      //   icon: <BiColorFill />,
+      // },
     ],
   },
 ];

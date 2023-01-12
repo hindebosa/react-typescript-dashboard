@@ -7,6 +7,10 @@ import { useStateContext } from "../context/ContextProvider";
 function AddProduct() {
   const { currentColor, addProduct } = useStateContext();
 
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: "AIzaSyBuTLnTvdUHJwR0SZZmJ9wI7fkuaSay1Ig",
+    libraries: ["places"],
+  });
   const AddProductSchema = Yup.object().shape({
     name: Yup.string()
       .min(2, "Too Short!")
@@ -16,6 +20,10 @@ function AddProduct() {
     amount: Yup.number().required("Required"),
     address: Yup.string().min(2, "Too Short!").required("Required"),
   });
+
+  if (!isLoaded) {
+    return <>loading</>;
+  }
 
   return (
     <div className="mt-24">
