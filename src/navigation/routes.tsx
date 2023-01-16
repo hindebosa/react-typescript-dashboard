@@ -1,12 +1,12 @@
 import { RouteProps, Outlet } from "react-router";
 import type { RouteObject } from "react-router";
-import { Suspense } from "react";
-import { Ecommerce, Orders, Employees, Customers, Kanban } from "../pages";
+
+import { Ecommerce } from "../pages";
 import Dashboard from "../components/Dashboard";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import AddProduct from "../pages/AddProduct";
-import { Sidebar } from "../components";
+
 import AuthGuard from "./AuthGuard";
 //@ts-ignore
 export interface PrivateRouteObject extends RouteProps {

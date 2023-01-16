@@ -3,8 +3,6 @@ import { useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
 
-import Login from "../pages/Login";
-
 interface AuthGuardProps {
   children: ReactNode;
 }

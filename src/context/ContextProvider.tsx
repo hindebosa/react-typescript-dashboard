@@ -110,10 +110,7 @@ export const ContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
       amount: product.amount,
       address: "hey hie",
     };
-    const result = await axios.post(
-      "http://localhost:6969/products/addProduct",
-      products
-    );
+    await axios.post("http://localhost:6969/products/addProduct", products);
   };
   const getAllTranspoters = async () => {
     const result = await axios.get(
