@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BsCurrencyDollar } from "react-icons/bs";
 
 import { Button } from "../components";
-import { earningData, recentTransactions } from "../data/dummy";
+import { earningData } from "../data/dummy";
 import { useStateContext } from "../context/ContextProvider";
 
 import { Product } from "../types";
@@ -16,6 +16,7 @@ const Ecommerce = () => {
       setAllProducts(await getAllProducts());
     };
     getAll();
+    // eslint-disable-next-line
   }, []);
 
   return (

@@ -5,7 +5,7 @@ import { useStateContext } from "../context/ContextProvider";
 import { Product } from "../types";
 
 export default function Kanban() {
-  const { currentColor, getAllProducts } = useStateContext();
+  const { getAllProducts } = useStateContext();
   const [products, setAllProducts] = useState<Product[]>();
   const navigate = useNavigate();
 
@@ -14,6 +14,7 @@ export default function Kanban() {
       setAllProducts(await getAllProducts());
     };
     getAll();
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -81,9 +82,6 @@ export default function Kanban() {
                     <div className="text-base font-semibold">
                       {product.name}
                     </div>
-                    {/* <div className="font-normal text-gray-500">
-                      neil.sims@flowbite.com
-                    </div> */}
                   </div>
                 </th>
                 <td className="py-4 px-6">{product.price}</td>
@@ -95,7 +93,7 @@ export default function Kanban() {
                 </td>
                 <td className="py-4 px-6">
                   <a
-                    href="#"
+                    href="/"
                     className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                   >
                     {product.address}
