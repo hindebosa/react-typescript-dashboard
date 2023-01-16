@@ -1,16 +1,11 @@
 import React, { PropsWithChildren, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import { FiSettings } from "react-icons/fi";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 
 import { Navbar, Footer, Sidebar, ThemeSettings } from "./index";
-import { Ecommerce, Orders, Employees, Customers, Kanban } from "../pages";
 
 import { useStateContext } from "../context/ContextProvider";
-
-import AddProduct from "../pages/AddProduct";
-
-import SingleProduct from "../pages/Product";
 
 const Dashboard: React.FC<PropsWithChildren> = ({ children }) => {
   const {
@@ -30,6 +25,7 @@ const Dashboard: React.FC<PropsWithChildren> = ({ children }) => {
       setCurrentColor(currentThemeColor);
       setCurrentMode(currentThemeMode);
     }
+    // eslint-disable-next-line
   }, []);
 
   return (

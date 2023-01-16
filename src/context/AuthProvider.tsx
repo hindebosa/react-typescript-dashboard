@@ -8,7 +8,7 @@ import {
 } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const BackendUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -65,6 +65,7 @@ export const UserProvider: React.FC<PropsWithChildren> = ({ children }) => {
       logout,
       isAuthenticated,
     }),
+    // eslint-disable-next-line
     [cookies]
   );
 

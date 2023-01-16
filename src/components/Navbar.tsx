@@ -59,6 +59,7 @@ const Navbar = () => {
     handleResize();
 
     return () => window.removeEventListener("resize", handleResize);
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -67,6 +68,7 @@ const Navbar = () => {
     } else {
       setActiveMenu(true);
     }
+    // eslint-disable-next-line
   }, [screenSize]);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);

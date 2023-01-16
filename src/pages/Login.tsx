@@ -3,7 +3,7 @@ import React from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { useAuth } from "../context/AuthProvider";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 const Login = () => {
   const { login } = useAuth();
   const SignupSchema = Yup.object().shape({
