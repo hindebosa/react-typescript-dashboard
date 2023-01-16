@@ -5,6 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ContextProvider } from "./context/ContextProvider";
 import PaynowReactWrapper from "paynow-react";
+import { BrowserRouter } from "react-router-dom";
+import { UserProvider } from "./context/AuthProvider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -17,11 +19,15 @@ const paynow_config = {
 };
 root.render(
   <React.StrictMode>
-    <ContextProvider>
-      <PaynowReactWrapper {...paynow_config}>
-        <App />
-      </PaynowReactWrapper>
-    </ContextProvider>
+    <BrowserRouter>
+      <UserProvider>
+        <ContextProvider>
+          <PaynowReactWrapper {...paynow_config}>
+            <App />
+          </PaynowReactWrapper>
+        </ContextProvider>
+      </UserProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

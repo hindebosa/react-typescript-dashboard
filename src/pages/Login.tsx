@@ -2,8 +2,10 @@ import React from "react";
 
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
-
+import { useAuth } from "../context/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 const Login = () => {
+  const { login } = useAuth();
   const SignupSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Required"),
     password: Yup.string()
@@ -13,6 +15,7 @@ const Login = () => {
 
   return (
     <div className="container mx-auto">
+      <Toaster position="bottom-center" />
       <div className="flex justify-center px-6 my-12">
         <div className="w-full xl:w-3/4 lg:w-11/12 flex">
           <div
@@ -32,8 +35,9 @@ const Login = () => {
                 password: "",
               }}
               validationSchema={SignupSchema}
-              onSubmit={(values) => {
-                alert(JSON.stringify(values, null, 2));
+              onSubmit={async (values) => {
+                console.log(values.email);
+                await login({ email: values.email, password: values.password });
               }}
             >
               {({ errors, touched }) => (
